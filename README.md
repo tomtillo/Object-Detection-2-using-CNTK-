@@ -25,6 +25,62 @@ CNTK versions supported  -
 * GPU
 _We will set up for the GPU version_
 
+### Versions at the end 
+This will be the versions of the packages that we will be ending up installing/ configuring 
+* conda 4.2.9
+* python 3.5
+* cntk 2.5.1
+* keras 2.2.0
+* Model : AlexNet
+* Imageset : Grocery
+
+## Step 1 - Setting up the CNTK-python environment
+Assumption : anaconda is pre-installed.
+Create a new anaconda environment
+```
+conda create -n cntkpy35 python=3.5
+activate cntkpy35
+pip install cntk-gpu
+
+```
+Note : There were some DLL compatability(from CUDA libraries) with python versions 3.4 and 3.6 , hence we are using python 3.5
+
+<< IMAGE COMES HERE>>
+
+## Check for the versions 
+In the conda environment
+```
+python
+import cntk;
+print (cntk.__version__)
+>> 2.5.1
+```
+
+### Install  the supporting libraries and keras
+```
+pip install opencv-python easydict pyyaml
+pip install  keras
+```
+## Check if keras is using CNTK as backend 
+```
+set KERAS_BACKEND=cntk
+
+python
+import keras;
+
+```
+This should show that CNTK is being used in the backend
+
+<< IMAGE COMES HERE >>
+
+### Getting the sample files 
+In the conda environment , go to the working directory
+get the samples files from github
+
+```
+python -m cntk.sample_installer 
+```
+
 
 
 
